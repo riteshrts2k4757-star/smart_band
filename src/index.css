@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #05070e;
+    color: #f1f5f9;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Glassmorphism card surfaces */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-subtle {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* LED Indicator Glows */
+.led-glow-green {
+  background-color: #10b981;
+  box-shadow: 
+    0 0 10px #10b981,
+    0 0 20px #34d399,
+    0 0 35px #059669,
+    inset 0 0 8px #d1fae5;
+  border-color: #a7f3d0;
+}
+
+.led-glow-red {
+  background-color: #ef4444;
+  box-shadow: 
+    0 0 10px #ef4444,
+    0 0 20px #f87171,
+    0 0 35px #dc2626,
+    inset 0 0 8px #fee2e2;
+  border-color: #fca5a5;
+}
+
+.led-off {
+  background: radial-gradient(circle at 35% 35%, #1e293b, #090d16);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Vehicle marker rotation transition */
+.vehicle-marker-icon {
+  transition: transform 0.08s linear;
+}
+
+/* Leaflet dark mode overrides */
+.leaflet-container {
+  background-color: #0b0f19 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: #94a3b8 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #1e293b !important;
+  color: #38bdf8 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(11, 15, 25, 0.8) !important;
+  color: #64748b !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #38bdf8 !important;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Dark tactical navigation map shader on standard OpenStreetMap tiles */
+.map-dark-tiles {
+  filter: brightness(0.65) invert(1) contrast(2.6) hue-rotate(205deg) saturate(0.35);
+}
+
+.map-muted-dark-tiles {
+  filter: brightness(0.7) invert(0.9) contrast(1.8) hue-rotate(190deg) saturate(0.3);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.8);
+}
+
