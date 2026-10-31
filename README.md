@@ -103,35 +103,66 @@
 
 ---
 
-## 🚀 Installation & Running
+## 🚀 Installation & Setup
 
 ### Prerequisites
 - Node.js v18+ (tested on Node v20 & v24)
 - NPM v9+
-- OpenRouteService API key configured in `.env`:
-  ```env
-  OPEN_ROUTE_SERVICES=your_openrouteservice_api_key_here
-  PORT=5000
-  ```
+- An OpenRouteService API account (free registration at [openrouteservice.org](https://openrouteservice.org/dev/#/signup))
 
-### 1. Install Dependencies
+---
+
+### 1. Environment Variable Configuration (`.env`)
+
+The application requires an OpenRouteService API key to calculate driving routes, maneuvers, and turn-by-turn geometry. The key is securely loaded and queried **only by the Express backend**, protecting your credentials from client-side exposure.
+
+#### Step 1: Create the `.env` file
+In the **root directory** of the project, create a file named `.env` (or copy the provided `.env.example` template):
+
+```bash
+# On Linux / macOS:
+cp .env.example .env
+
+# On Windows (PowerShell):
+Copy-Item .env.example .env
+```
+
+#### Step 2: Add the required environment variable key
+Open `.env` in your text editor and add the environment variable using the exact key name **`OPEN_ROUTE_SERVICES`**:
+
+```env
+# OpenRouteService API Key
+OPEN_ROUTE_SERVICES=your_openrouteservice_api_key_here
+
+# Optional: Server Port (defaults to 5000 if omitted)
+PORT=5000
+```
+
+> [!IMPORTANT]
+> - Replace `your_openrouteservice_api_key_here` with your actual key from the OpenRouteService dashboard.
+> - Do not wrap the key in quotes or add extra whitespace around the `=` sign.
+> - The `.env` file is listed in `.gitignore` and must **never** be committed to GitHub.
+
+---
+
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### 2. Start Development (Concurrent Backend + Frontend)
+### 3. Start Development Mode (Concurrent Backend + Frontend)
 ```bash
 npm run dev
 ```
-- **Frontend (Vite)**: [http://localhost:5173](http://localhost:5173) (automatically proxies `/api` to port 5000)
-- **Backend (Express)**: [http://localhost:5000](http://localhost:5000)
+- **Frontend (Vite UI)**: [http://localhost:5173](http://localhost:5173) (Vite dev server automatically proxies `/api` calls to the backend on port 5000)
+- **Backend (Express Proxy)**: [http://localhost:5000](http://localhost:5000)
 
-### 3. Production Build & Run
+### 4. Production Build & Run
 ```bash
 npm run build
 npm start
 ```
-Served in production mode at [http://localhost:5000](http://localhost:5000).
+The Express server serves the compiled production frontend and API endpoints at [http://localhost:5000](http://localhost:5000).
 
 ---
 
